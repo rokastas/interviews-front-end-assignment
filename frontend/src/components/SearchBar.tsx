@@ -44,7 +44,7 @@ const SearchBar = ({
   }
 
   return (
-    <div className="flex mb-4 bg-white p-3 rounded-full">
+    <div className="flex flex-grow bg-white p-3 rounded-full">
       <input
         type="text"
         value={query}

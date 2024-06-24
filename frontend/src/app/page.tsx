@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Recipe, Cuisine, Difficulty, Diet } from "../utils/types";
+
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchRecipes } from "../features/recipes/recipesSlice";
 import { fetchCuisines } from "../features/cuisines/cuisinesSlice";
@@ -11,6 +12,8 @@ import { fetchDiets } from "../features/diets/dietsSlice";
 import RecipeList from "../components/RecipeList";
 import SearchBar from "../components/SearchBar";
 import RecipeModal from "../components/RecipeModal";
+import Button from "../components/Button";
+import AddRecipeModal from "../components/AddRecipeModal";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +29,7 @@ const Home = () => {
   useState<Difficulty["id"]>("");
   const [selectedDietId, setSelectedDietId] = useState<Diet["id"]>("");
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
+  const [toggleAddRecipeModal, setToggleAddRecipeModal] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(fetchRecipes());
@@ -41,7 +45,7 @@ const Home = () => {
       selectedDifficultyId,
       selectedDietId
     );
-  });
+  }, [searchQuery, selectedCuisineId, selectedDifficultyId, selectedDietId, recipes]);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -98,24 +102,38 @@ const Home = () => {
     setSelectedRecipe(recipe);
   };
 
-  const closeModal = () => {
+  const closeRecipeModal = () => {
     setSelectedRecipe(null);
+  };
+
+  const handleAddRecipe = () => {
+    setToggleAddRecipeModal(true);
+  };
+
+  const closeAddRecipeModal = () => {
+    setToggleAddRecipeModal(false);
   };
 
   return (
     <div className="m-auto p-8 max-w-7xl">
-      <SearchBar
-        onSearch={handleSearch}
-        onCuisineChange={handleCuisineChange}
-        onDifficultyChange={handleDifficultyChange}
-        onDietChange={handleDietChange}
-        cuisines={cuisines}
-        difficulties={difficulties}
-        diets={diets}
-      />
+      <div className="flex flex-row mb-4">
+        <SearchBar
+          onSearch={handleSearch}
+          onCuisineChange={handleCuisineChange}
+          onDifficultyChange={handleDifficultyChange}
+          onDietChange={handleDietChange}
+          cuisines={cuisines}
+          difficulties={difficulties}
+          diets={diets}
+        />
+        <Button onClick={handleAddRecipe}>Add Recipe</ Button>
+      </div>
       <RecipeList recipes={filteredRecipes} onRecipeClick={handleRecipeClick} />
       {selectedRecipe && (
-        <RecipeModal recipe={selectedRecipe} onClose={closeModal} />
+        <RecipeModal recipe={selectedRecipe} onClose={closeRecipeModal} />
+      )}
+      {toggleAddRecipeModal && (
+        <AddRecipeModal onClose={closeAddRecipeModal} />
       )}
     </div>
   );
