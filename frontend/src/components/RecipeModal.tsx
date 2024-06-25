@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { Recipe } from '../utils/types';
+import { Recipe, Comment } from '../utils/types';
+
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { fetchComments } from "../features/comments/commentsSlice";
 
 interface RecipeModalProps {
   recipe: Recipe | null;
@@ -8,6 +11,13 @@ interface RecipeModalProps {
 }
 
 const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, onClose }) => {
+  const dispatch = useAppDispatch();
+  const comments = useAppSelector((state) => state.comments.data);
+
+  useEffect(() => {
+    dispatch(fetchComments());
+  }, [dispatch]);
+
   useEffect(() => {
     const disableScroll = () => {
       document.body.style.overflow = 'hidden';
@@ -43,6 +53,8 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, onClose }) => {
 
   if (!recipe) return null;
 
+  const recipeComments = comments?.filter((comment) => comment.recipeId === recipe.id);
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-40 py-20">
       <div id="recipe-modal-content" className="flex bg-white min-w-full min-h-full">
@@ -67,7 +79,16 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, onClose }) => {
             ))}
           </ul>
           <h3 className="text-2xl font-serif mb-6">Instructions</h3>
-          <p>{recipe.instructions}</p>
+          <p className="mb-10">{recipe.instructions}</p>
+          <h3 className="text-2xl font-serif mb-6">Comments</h3>
+          <ul className="list-disc pl-5">
+            {recipeComments?.map((comment) => (
+              <li key={comment.id}>
+                <p>{comment.comment}</p>
+                <p>Rating: {comment.rating}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

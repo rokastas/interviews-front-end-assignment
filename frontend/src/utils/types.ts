@@ -23,3 +23,11 @@ export interface Diet {
   id: string;
   name: string;
 }
+
+export interface Comment {
+  id: string;
+  recipeId: string;
+  comment: string;
+  rating: number;
+  date: string;
+}
