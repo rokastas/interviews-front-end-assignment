@@ -24,7 +24,7 @@ const Rating = ({ recipe }: RatingProps) => {
   const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
   return (
-    <div className="flex justify-center items-center text-yellow-400">
+    <div className="flex items-center text-yellow-400">
       {Array.from({ length: fullStars }).map((_, index) => (
         <svg
           key={`full-${index}`}

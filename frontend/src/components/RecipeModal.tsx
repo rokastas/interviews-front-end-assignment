@@ -5,6 +5,9 @@ import { Recipe } from '../utils/types';
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchComments } from "../features/comments/commentsSlice";
 
+import Rating from './Rating';
+import DifficultyIcon from './DifficultyIcon';
+
 interface RecipeModalProps {
   recipe: Recipe | null;
   onClose: () => void;
@@ -71,8 +74,12 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, onClose }) => {
           <button onClick={onClose} className="absolute text-4xl top-2 right-2 text-gray-500 hover:text-gray-700">
             &times;
           </button>
-          <h2 className="h-100 font-serif text-7xl pb-20">{recipe.name}</h2>
-          <h3 className="text-2xl font-serif mb-6">Ingredients</h3>
+          <h2 className="h-100 font-serif text-7xl pb-6">{recipe.name}</h2>
+          <div className="flex flex-row gap-4">
+            <DifficultyIcon difficultyId={recipe.difficultyId} />
+            <Rating recipe={recipe}/>
+          </div>
+          <h3 className="pt-16 text-2xl font-serif mb-6">Ingredients</h3>
           <ul className="list-disc pl-5 mb-10">
             {recipe.ingredients.map((ingredient) => (
               <li key={ingredient}>{ingredient}</li>
