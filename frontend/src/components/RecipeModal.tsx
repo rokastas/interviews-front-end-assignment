@@ -48,7 +48,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, onClose }) => {
       <div id="recipe-modal-content" className="flex bg-white min-w-full min-h-full">
         <div className="w-full relative">
           <Image
-            src={recipe.image}
+            src={recipe.image ? `http://localhost:8080${recipe.image}` : "/no-image.png"  }
             alt={recipe.name}
             layout="fill"
             objectFit="cover"

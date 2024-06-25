@@ -17,7 +17,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onRecipeClick }) => {
       >
         <div className="h-80 relative">
           <Image
-            src={recipe.image}
+            src={recipe.image ? `http://localhost:8080${recipe.image}` : "/no-image.png"  }
             alt={recipe.name}
             layout="fill"
             objectFit="cover"

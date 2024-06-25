@@ -139,8 +139,8 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
               <label htmlFor="cuisineId" className="block text-sm font-medium text-gray-700">
                 Cuisine Type
               </label>
-              <select id="cuisine-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>
+              <select id="cuisine-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                <option value="">
                   -- Select Cuisine --
                 </option>
                 {cuisines.map((cuisine) => (
@@ -154,8 +154,8 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
               <label htmlFor="dietId" className="block text-sm font-medium text-gray-700">
                 Dietary Preference
               </label>
-              <select id="diet-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>
+              <select id="diet-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                <option value="">
                   -- Select Diet --
                 </option>
                 {diets.map((diet) => (
@@ -169,8 +169,8 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
               <label htmlFor="difficultyId" className="block text-sm font-medium text-gray-700">
                 Difficulty Level
               </label>
-              <select id="cuisine-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>
+              <select id="cuisine-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                <option value="">
                   -- Select Difficulty --
                 </option>
                 {difficulties.map((difficulty) => (

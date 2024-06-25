@@ -45,6 +45,7 @@ const Home = () => {
       selectedDifficultyId,
       selectedDietId
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, selectedCuisineId, selectedDifficultyId, selectedDietId, recipes]);
 
   const handleSearch = (query: string) => {
@@ -112,6 +113,7 @@ const Home = () => {
 
   const closeAddRecipeModal = () => {
     setToggleAddRecipeModal(false);
+    dispatch(fetchRecipes());
   };
 
   return (
