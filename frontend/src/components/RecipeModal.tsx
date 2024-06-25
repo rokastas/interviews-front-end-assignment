@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Recipe, Comment as CommentType } from '../utils/types';
 
 import RatingAverage from './RatingAverage';
 import DifficultyIcon from './DifficultyIcon';
 import Comment from './Comment';
+import AddCommentField from './AddCommentField';
 
 interface RecipeModalProps {
   recipe: Recipe | null;
@@ -13,6 +14,8 @@ interface RecipeModalProps {
 }
 
 const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, comments, onClose }) => {
+  const [currentComments, setCurrentComments] = useState<CommentType[] | null>(comments);
+
   useEffect(() => {
     const disableScroll = () => {
       document.body.style.overflow = 'hidden';
@@ -46,13 +49,24 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, comments, onClose }) 
     };
   }, [onClose]);
 
+  useEffect(() => {
+    setCurrentComments(comments);
+  }, [comments]);
+
   if (!recipe) return null;
 
-  const recipeComments = comments?.filter((comment) => comment.recipeId === recipe.id);
+  const recipeComments = currentComments?.filter((comment) => comment.recipeId === recipe.id);
+
+  const handleAddComment = (newComment: CommentType) => {
+    setCurrentComments((prevComments) => prevComments ? [...prevComments, newComment] : [newComment]);
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-40 py-20">
-      <div id="recipe-modal-content" className="flex bg-white min-w-full min-h-full">
+      <div id="recipe-modal-content" className="relative flex bg-white min-w-full max-h-full">
+        <button onClick={onClose} className="absolute text-4xl top-4 right-7 text-gray-500 hover:text-gray-700">
+          &times;
+        </button>
         <div className="w-full relative">
           <Image
             src={recipe.image ? `http://localhost:8080${recipe.image}` : "/no-image.png"  }
@@ -62,10 +76,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, comments, onClose }) 
             className="max-w-full h-full"
           />
         </div>
-        <div className="m-16 relative w-full">
-          <button onClick={onClose} className="absolute text-4xl top-2 right-2 text-gray-500 hover:text-gray-700">
-            &times;
-          </button>
+        <div className="m-16 relative w-full overflow-auto">
           <h2 className="h-100 font-serif text-7xl pb-6">{recipe.name}</h2>
           <div className="flex flex-row gap-4">
             <DifficultyIcon difficultyId={recipe.difficultyId} />
@@ -85,6 +96,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, comments, onClose }) 
               <Comment key={comment.id} comment={comment}/>
             ))}
           </ul>
+          <AddCommentField recipe={recipe} onAddComment={handleAddComment}/>
         </div>
       </div>
     </div>
