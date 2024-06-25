@@ -8,6 +8,7 @@ import { fetchRecipes } from "../features/recipes/recipesSlice";
 import { fetchCuisines } from "../features/cuisines/cuisinesSlice";
 import { fetchDifficulties } from "../features/difficulties/difficultiesSlice";
 import { fetchDiets } from "../features/diets/dietsSlice";
+import { fetchComments } from "../features/comments/commentsSlice";
 
 import RecipeList from "../components/RecipeList";
 import SearchBar from "../components/SearchBar";
@@ -21,6 +22,7 @@ const Home = () => {
   const cuisines = useAppSelector((state) => state.cuisines.data);
   const difficulties = useAppSelector((state) => state.difficulties.data);
   const diets = useAppSelector((state) => state.diets.data);
+  const comments = useAppSelector((state) => state.comments.data);
 
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
@@ -36,6 +38,7 @@ const Home = () => {
     dispatch(fetchDiets());
     dispatch(fetchDifficulties());
     dispatch(fetchCuisines());
+    dispatch(fetchComments());
   }, [dispatch]);
 
   useEffect(() => {
@@ -132,7 +135,7 @@ const Home = () => {
       </div>
       <RecipeList recipes={filteredRecipes} onRecipeClick={handleRecipeClick} />
       {selectedRecipe && (
-        <RecipeModal recipe={selectedRecipe} onClose={closeRecipeModal} />
+        <RecipeModal recipe={selectedRecipe} comments={comments} onClose={closeRecipeModal} />
       )}
       {toggleAddRecipeModal && (
         <AddRecipeModal onClose={closeAddRecipeModal} />

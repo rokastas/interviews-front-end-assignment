@@ -1,26 +1,18 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { Recipe } from '../utils/types';
+import { Recipe, Comment as CommentType } from '../utils/types';
 
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { fetchComments } from "../features/comments/commentsSlice";
-
-import Rating from './Rating';
+import RatingAverage from './RatingAverage';
 import DifficultyIcon from './DifficultyIcon';
+import Comment from './Comment';
 
 interface RecipeModalProps {
   recipe: Recipe | null;
+  comments: CommentType[] | null;
   onClose: () => void;
 }
 
-const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, onClose }) => {
-  const dispatch = useAppDispatch();
-  const comments = useAppSelector((state) => state.comments.data);
-
-  useEffect(() => {
-    dispatch(fetchComments());
-  }, [dispatch]);
-
+const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, comments, onClose }) => {
   useEffect(() => {
     const disableScroll = () => {
       document.body.style.overflow = 'hidden';
@@ -77,7 +69,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, onClose }) => {
           <h2 className="h-100 font-serif text-7xl pb-6">{recipe.name}</h2>
           <div className="flex flex-row gap-4">
             <DifficultyIcon difficultyId={recipe.difficultyId} />
-            <Rating recipe={recipe}/>
+            <RatingAverage recipe={recipe}/>
           </div>
           <h3 className="pt-16 text-2xl font-serif mb-6">Ingredients</h3>
           <ul className="list-disc pl-5 mb-10">
@@ -88,12 +80,9 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, onClose }) => {
           <h3 className="text-2xl font-serif mb-6">Instructions</h3>
           <p className="mb-10">{recipe.instructions}</p>
           <h3 className="text-2xl font-serif mb-6">Comments</h3>
-          <ul className="list-disc pl-5">
+          <ul className="list-disc">
             {recipeComments?.map((comment) => (
-              <li key={comment.id}>
-                <p>{comment.comment}</p>
-                <p>Rating: {comment.rating}</p>
-              </li>
+              <Comment key={comment.id} comment={comment}/>
             ))}
           </ul>
         </div>

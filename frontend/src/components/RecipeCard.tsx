@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Recipe } from "../utils/types";
 import DifficultyIcon from "./DifficultyIcon";
-import Rating from "./Rating";
+import RatingAverage from "./RatingAverage";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -31,7 +31,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onRecipeClick }) => {
           </h2>
           <div className="flex flex-row justify-between">
             <DifficultyIcon difficultyId={recipe.difficultyId} />
-            <Rating recipe={recipe}/>
+            <RatingAverage recipe={recipe}/>
           </div>
         </div>
       </div>
