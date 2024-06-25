@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Recipe } from "../utils/types";
+import DifficultyIcon from "./DifficultyIcon";
+import Rating from "./Rating";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -27,7 +29,10 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onRecipeClick }) => {
           <h2 className="h-100 font-serif font-light text-4xl pb-20">
             {recipe.name}
           </h2>
-          <p>Difficulty: {recipe.difficultyId}</p>
+          <div className="flex flex-row justify-between">
+            <DifficultyIcon difficultyId={recipe.difficultyId} />
+            <Rating recipe={recipe}/>
+          </div>
         </div>
       </div>
     </div>

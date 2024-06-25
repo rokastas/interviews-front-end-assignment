@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { Recipe, Comment } from '../utils/types';
+import { Recipe } from '../utils/types';
 
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchComments } from "../features/comments/commentsSlice";
