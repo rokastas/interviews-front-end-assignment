@@ -8,6 +8,10 @@ interface RecipeCardProps {
   onRecipeClick: (recipe: Recipe) => void;
 }
 
+const imageStyle: React.CSSProperties = {
+  objectFit: "cover",
+}
+
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onRecipeClick }) => {
   return (
     <div className="bg-yellow">
@@ -21,8 +25,10 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onRecipeClick }) => {
           <Image
             src={recipe.image ? `http://localhost:8080${recipe.image}` : "/no-image.png"  }
             alt={recipe.name}
-            layout="fill"
-            objectFit="cover"
+            style={imageStyle}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            fill
+            priority
           />
         </div>
         <div className="p-4">

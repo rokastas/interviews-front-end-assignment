@@ -61,6 +61,10 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, comments, onClose }) 
     setCurrentComments((prevComments) => prevComments ? [...prevComments, newComment] : [newComment]);
   };
 
+  const imageStyle: React.CSSProperties = {
+    objectFit: 'cover',
+  };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-40 py-20">
       <div id="recipe-modal-content" className="relative flex bg-white min-w-full max-h-full">
@@ -71,9 +75,10 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, comments, onClose }) 
           <Image
             src={recipe.image ? `http://localhost:8080${recipe.image}` : "/no-image.png"  }
             alt={recipe.name}
-            layout="fill"
-            objectFit="cover"
+            style={imageStyle}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="max-w-full h-full"
+            fill
           />
         </div>
         <div className="m-16 relative w-full overflow-auto">

@@ -1,15 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useEffect, useState } from "react";
 import { Recipe, Cuisine, Difficulty, Diet } from "../utils/types";
-
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchRecipes } from "../features/recipes/recipesSlice";
 import { fetchCuisines } from "../features/cuisines/cuisinesSlice";
 import { fetchDifficulties } from "../features/difficulties/difficultiesSlice";
 import { fetchDiets } from "../features/diets/dietsSlice";
 import { fetchComments } from "../features/comments/commentsSlice";
-
 import RecipeList from "../components/RecipeList";
 import SearchBar from "../components/SearchBar";
 import RecipeModal from "../components/RecipeModal";
@@ -23,23 +22,30 @@ const Home = () => {
   const difficulties = useAppSelector((state) => state.difficulties.data);
   const diets = useAppSelector((state) => state.diets.data);
   const comments = useAppSelector((state) => state.comments.data);
+  const hasMore = useAppSelector((state) => state.recipes.hasMore);
 
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [selectedCuisineId, setSelectedCuisineId] = useState<Cuisine["id"]>("");
-  const [selectedDifficultyId, setSelectedDifficultyId] =
-  useState<Difficulty["id"]>("");
+  const [selectedDifficultyId, setSelectedDifficultyId] = useState<Difficulty["id"]>("");
   const [selectedDietId, setSelectedDietId] = useState<Diet["id"]>("");
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
   const [toggleAddRecipeModal, setToggleAddRecipeModal] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState<number>(1);
+
+  const PAGELIMIT = 9;
 
   useEffect(() => {
-    dispatch(fetchRecipes());
-    dispatch(fetchDiets());
-    dispatch(fetchDifficulties());
-    dispatch(fetchCuisines());
-    dispatch(fetchComments());
-  }, [dispatch]);
+    if (recipes.length === 0) {
+      dispatch(fetchRecipes({ page: 0, limit: PAGELIMIT }));
+      dispatch(fetchDiets());
+      dispatch(fetchDifficulties());
+      dispatch(fetchCuisines());
+      dispatch(fetchComments());
+    }
+  }, [dispatch, recipes.length]);
 
   useEffect(() => {
     filterRecipes(
@@ -48,7 +54,6 @@ const Home = () => {
       selectedDifficultyId,
       selectedDietId
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, selectedCuisineId, selectedDifficultyId, selectedDietId, recipes]);
 
   const handleSearch = (query: string) => {
@@ -116,8 +121,31 @@ const Home = () => {
 
   const closeAddRecipeModal = () => {
     setToggleAddRecipeModal(false);
-    dispatch(fetchRecipes());
+    if (hasMore) {
+      dispatch(fetchRecipes({ page: page + 1, limit: PAGELIMIT }));
+      setPage(page + 1);
+    }
   };
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >= (document.body.offsetHeight - 500) &&
+      !loading &&
+      !error &&
+      hasMore
+    ) {
+      setLoading(true);
+      dispatch(fetchRecipes({ page: page + 1, limit: PAGELIMIT })).then(() => {
+        setLoading(false);
+        setPage(page + 1);
+      });
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, error, hasMore]);
 
   return (
     <div className="m-auto p-8 max-w-7xl">
@@ -131,7 +159,7 @@ const Home = () => {
           difficulties={difficulties}
           diets={diets}
         />
-        <Button onClick={handleAddRecipe}>Add Recipe</ Button>
+        <Button onClick={handleAddRecipe}>Add Recipe</Button>
       </div>
       <RecipeList recipes={filteredRecipes} onRecipeClick={handleRecipeClick} />
       {selectedRecipe && (
@@ -140,6 +168,7 @@ const Home = () => {
       {toggleAddRecipeModal && (
         <AddRecipeModal onClose={closeAddRecipeModal} />
       )}
+      {loading && <p>Loading...</p>}
     </div>
   );
 };
