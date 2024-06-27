@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../store/hooks";
 
 interface RecipeModalProps {
@@ -6,12 +6,12 @@ interface RecipeModalProps {
 }
 
 const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
-  const [name, setName] = useState('');
-  const [ingredients, setIngredients] = useState('');
-  const [instructions, setInstructions] = useState('');
-  const [cuisineId, setCuisineId] = useState('');
-  const [dietId, setDietId] = useState('');
-  const [difficultyId, setDifficultyId] = useState('');
+  const [name, setName] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [instructions, setInstructions] = useState("");
+  const [cuisineId, setCuisineId] = useState("");
+  const [dietId, setDietId] = useState("");
+  const [difficultyId, setDifficultyId] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
 
   const cuisines = useAppSelector((state) => state.cuisines.data);
@@ -20,33 +20,33 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
 
   useEffect(() => {
     const disableScroll = () => {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     };
 
     const enableScroll = () => {
-      document.body.style.overflow = 'visible';
+      document.body.style.overflow = "visible";
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         onClose();
       }
     };
 
     const handleClickOutside = (event: MouseEvent) => {
-      const modal = document.getElementById('recipe-modal-content');
+      const modal = document.getElementById("recipe-modal-content");
       if (modal && !modal.contains(event.target as Node)) {
         onClose();
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
     disableScroll();
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
       enableScroll();
     };
   }, [onClose]);
@@ -55,31 +55,31 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('ingredients', ingredients);
-    formData.append('instructions', instructions);
-    formData.append('cuisineId', cuisineId);
-    formData.append('dietId', dietId);
-    formData.append('difficultyId', difficultyId);
+    formData.append("name", name);
+    formData.append("ingredients", ingredients);
+    formData.append("instructions", instructions);
+    formData.append("cuisineId", cuisineId);
+    formData.append("dietId", dietId);
+    formData.append("difficultyId", difficultyId);
     if (imageFile) {
-      formData.append('image', imageFile);
+      formData.append("image", imageFile);
     }
 
     try {
-      const response = await fetch('http://localhost:8080/recipes', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8080/recipes", {
+        method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error('Failed to add recipe');
+        throw new Error("Failed to add recipe");
       }
 
       const newRecipe = await response.json();
-      console.log('New recipe added:', newRecipe);
+      console.log("New recipe added:", newRecipe);
       onClose();
     } catch (error) {
-      console.error('Error adding recipe:', error);
+      console.error("Error adding recipe:", error);
     }
   };
 
@@ -92,11 +92,17 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-40 py-20">
-      <div id="recipe-modal-content" className="flex bg-white min-w-full max-w-3xl rounded-lg overflow-hidden">
+      <div
+        id="recipe-modal-content"
+        className="flex bg-white min-w-full max-w-3xl rounded-lg overflow-hidden"
+      >
         <form className="w-full p-8" onSubmit={handleSubmit}>
           <h2 className="text-2xl font-bold mb-4">Add New Recipe</h2>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
               Recipe Name
             </label>
             <input
@@ -109,7 +115,10 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="ingredients" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="ingredients"
+              className="block text-sm font-medium text-gray-700"
+            >
               Ingredients (comma-separated)
             </label>
             <textarea
@@ -122,7 +131,10 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="instructions" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="instructions"
+              className="block text-sm font-medium text-gray-700"
+            >
               Instructions
             </label>
             <textarea
@@ -136,13 +148,20 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
           </div>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label htmlFor="cuisineId" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="cuisineId"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Cuisine Type
               </label>
-              <select id="cuisine-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                <option value="">
-                  -- Select Cuisine --
-                </option>
+              <select
+                id="cuisineId"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={cuisineId}
+                onChange={(e) => setCuisineId(e.target.value)}
+                required
+              >
+                <option value="">-- Select Cuisine --</option>
                 {cuisines.map((cuisine) => (
                   <option key={cuisine.id} value={cuisine.id}>
                     {cuisine.name}
@@ -151,13 +170,20 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
               </select>
             </div>
             <div>
-              <label htmlFor="dietId" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="dietId"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Dietary Preference
               </label>
-              <select id="diet-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                <option value="">
-                  -- Select Diet --
-                </option>
+              <select
+                id="dietId"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={dietId}
+                onChange={(e) => setDietId(e.target.value)}
+                required
+              >
+                <option value="">-- Select Diet --</option>
                 {diets.map((diet) => (
                   <option key={diet.id} value={diet.id}>
                     {diet.name}
@@ -166,13 +192,20 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
               </select>
             </div>
             <div>
-              <label htmlFor="difficultyId" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="difficultyId"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Difficulty Level
               </label>
-              <select id="cuisine-picker" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                <option value="">
-                  -- Select Difficulty --
-                </option>
+              <select
+                id="difficultyId"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={difficultyId}
+                onChange={(e) => setDifficultyId(e.target.value)}
+                required
+              >
+                <option value="">-- Select Difficulty --</option>
                 {difficulties.map((difficulty) => (
                   <option key={difficulty.id} value={difficulty.id}>
                     {difficulty.name}
@@ -182,7 +215,10 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
             </div>
           </div>
           <div className="mb-4">
-            <label htmlFor="recipeImage" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="recipeImage"
+              className="block text-sm font-medium text-gray-700"
+            >
               Recipe Image
             </label>
             <input
