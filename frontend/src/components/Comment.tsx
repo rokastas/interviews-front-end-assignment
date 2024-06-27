@@ -1,5 +1,5 @@
 import { Comment as CommentType } from '../utils/types';
-import Rating from './Rating';
+import Rating from './rating/Rating';
 
 const Comment = ({ comment }: { comment: CommentType }) => {
   return (

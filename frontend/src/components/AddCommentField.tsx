@@ -1,6 +1,6 @@
 import { Recipe, Comment as CommentType } from "../utils/types";
 import { useState } from "react";
-import RatingSelector from "./RatingSelector";
+import RatingSelector from "./rating/RatingSelector";
 
 interface AddCommentFieldProps {
   recipe: Recipe;

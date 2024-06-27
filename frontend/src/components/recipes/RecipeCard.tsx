@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { Recipe } from "../utils/types";
-import DifficultyIcon from "./DifficultyIcon";
-import RatingAverage from "./RatingAverage";
+import { Recipe } from "../../utils/types";
+import DifficultyIcon from "../DifficultyIcon";
+import RatingAverage from "../rating/RatingAverage";
+import { useAppSelector } from "../../store/hooks";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -13,6 +14,9 @@ const imageStyle: React.CSSProperties = {
 }
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onRecipeClick }) => {
+  const cuisines = useAppSelector((state) => state.cuisines.data);
+  const cuisine = cuisines.find((cuisine) => cuisine.id === recipe.cuisineId);
+
   return (
     <div className="bg-yellow">
       <div
@@ -32,9 +36,10 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onRecipeClick }) => {
           />
         </div>
         <div className="p-4">
-          <h2 className="h-100 font-serif font-light text-4xl pb-20">
+          <h2 className="h-100 font-serif font-light text-4xl pb-1">
             {recipe.name}
           </h2>
+          <p className="text-lg text-gray-500 pb-20">{cuisine?.name}</p>
           <div className="flex flex-row justify-between">
             <DifficultyIcon difficultyId={recipe.difficultyId} />
             <RatingAverage recipe={recipe}/>

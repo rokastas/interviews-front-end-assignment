@@ -3,11 +3,11 @@
 
 import useRecipeUIState from "../hooks/useRecipeUIState";
 import useRecipeData from "../hooks/useRecipeData";
-import RecipeList from "../components/RecipeList";
+import RecipeList from "../components/recipes/RecipeList";
 import SearchBar from "../components/SearchBar";
-import RecipeModal from "../components/RecipeModal";
+import RecipeModal from "../components/modals/RecipeModal";
 import Button from "../components/Button";
-import AddRecipeModal from "../components/AddRecipeModal";
+import AddRecipeModal from "../components/modals/AddRecipeModal";
 
 const Home = () => {
   const {

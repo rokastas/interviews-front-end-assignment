@@ -1,4 +1,4 @@
-import { Recipe } from "../utils/types";
+import { Recipe } from "../../utils/types";
 import RecipeCard from "./RecipeCard";
 
 interface RecipeListProps {

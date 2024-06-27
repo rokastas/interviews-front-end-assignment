@@ -1,5 +1,5 @@
-import { Recipe, Comment } from "../utils/types";
-import { useAppSelector } from "../store/hooks";
+import { Recipe, Comment } from "../../utils/types";
+import { useAppSelector } from "../../store/hooks";
 import Rating from "./Rating";
 
 interface RatingAverageProps {

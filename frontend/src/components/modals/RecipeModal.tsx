@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Recipe, Comment as CommentType } from '../utils/types';
+import { Recipe, Comment as CommentType } from '../../utils/types';
 
-import RatingAverage from './RatingAverage';
-import DifficultyIcon from './DifficultyIcon';
-import Comment from './Comment';
-import AddCommentField from './AddCommentField';
+import RatingAverage from '../rating/RatingAverage';
+import DifficultyIcon from '../DifficultyIcon';
+import Comment from '../Comment';
+import AddCommentField from '../AddCommentField';
 
 interface RecipeModalProps {
   recipe: Recipe | null;
