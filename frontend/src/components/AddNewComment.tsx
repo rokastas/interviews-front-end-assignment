@@ -7,7 +7,7 @@ interface AddCommentFieldProps {
   onAddComment: (newComment: CommentType) => void;
 }
 
-const AddCommentField: React.FC<AddCommentFieldProps> = ({ recipe, onAddComment }) => {
+const AddNewComment: React.FC<AddCommentFieldProps> = ({ recipe, onAddComment }) => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
 
@@ -70,4 +70,4 @@ const AddCommentField: React.FC<AddCommentFieldProps> = ({ recipe, onAddComment 
   );
 };
 
-export default AddCommentField;
+export default AddNewComment;

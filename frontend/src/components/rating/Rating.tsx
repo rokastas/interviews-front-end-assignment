@@ -1,4 +1,3 @@
-import React from 'react';
 import { FullStar, HalfStar, EmptyStar } from './RatingStars';
 
 interface RatingProps {

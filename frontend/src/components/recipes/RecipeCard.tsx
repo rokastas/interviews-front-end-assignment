@@ -36,7 +36,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onRecipeClick }) => {
           />
         </div>
         <div className="p-4">
-          <h2 className="h-100 font-serif font-light text-4xl pb-1">
+          <h2 className="h-100 font-serif font-light text-4xl pb-2">
             {recipe.name}
           </h2>
           <p className="text-lg text-gray-500 pb-20">{cuisine?.name}</p>

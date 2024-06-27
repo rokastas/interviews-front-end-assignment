@@ -5,7 +5,7 @@ import { Recipe, Comment as CommentType } from '../../utils/types';
 import RatingAverage from '../rating/RatingAverage';
 import DifficultyIcon from '../DifficultyIcon';
 import Comment from '../Comment';
-import AddCommentField from '../AddCommentField';
+import AddNewComment from '../AddNewComment';
 
 interface RecipeModalProps {
   recipe: Recipe | null;
@@ -101,7 +101,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, comments, onClose }) 
               <Comment key={comment.id} comment={comment}/>
             ))}
           </ul>
-          <AddCommentField recipe={recipe} onAddComment={handleAddComment}/>
+          <AddNewComment recipe={recipe} onAddComment={handleAddComment}/>
         </div>
       </div>
     </div>
