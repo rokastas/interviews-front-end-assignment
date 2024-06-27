@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { Comment } from '../../utils/types';
-import { commentsAPI } from './commentsAPI';
+import fetchCommentsFromAPI from './fetchCommentsFromAPI';
 
 interface CommentsState {
   data: Comment[];
@@ -15,7 +15,7 @@ const initialState: CommentsState = {
 };
 
 export const fetchComments = createAsyncThunk('comments/fetchComments', async () => {
-  const response = await commentsAPI();
+  const response = await fetchCommentsFromAPI();
   return response;
 });
 

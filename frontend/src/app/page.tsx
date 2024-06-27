@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import { Recipe, Cuisine, Difficulty, Diet } from "../utils/types";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { fetchRecipes } from "../features/recipes/recipesSlice";
+import { fetchRecipes, resetRecipes } from "../features/recipes/recipesSlice";
 import { fetchCuisines } from "../features/cuisines/cuisinesSlice";
 import { fetchDifficulties } from "../features/difficulties/difficultiesSlice";
 import { fetchDiets } from "../features/diets/dietsSlice";
@@ -23,88 +23,65 @@ const Home = () => {
   const diets = useAppSelector((state) => state.diets.data);
   const comments = useAppSelector((state) => state.comments.data);
   const hasMore = useAppSelector((state) => state.recipes.hasMore);
+  const status = useAppSelector((state) => state.recipes.status);
 
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [selectedCuisineId, setSelectedCuisineId] = useState<Cuisine["id"]>("");
   const [selectedDifficultyId, setSelectedDifficultyId] = useState<Difficulty["id"]>("");
   const [selectedDietId, setSelectedDietId] = useState<Diet["id"]>("");
-  const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
   const [toggleAddRecipeModal, setToggleAddRecipeModal] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<number>(1);
 
   const PAGELIMIT = 9;
 
   useEffect(() => {
-    if (recipes.length === 0) {
-      dispatch(fetchRecipes({ page: 0, limit: PAGELIMIT }));
-      dispatch(fetchDiets());
-      dispatch(fetchDifficulties());
-      dispatch(fetchCuisines());
-      dispatch(fetchComments());
-    }
-  }, [dispatch, recipes.length]);
+    dispatch(fetchDiets());
+    dispatch(fetchDifficulties());
+    dispatch(fetchCuisines());
+    dispatch(fetchComments());
+  }, [dispatch]);
 
   useEffect(() => {
-    filterRecipes(
-      searchQuery,
-      selectedCuisineId,
-      selectedDifficultyId,
-      selectedDietId
-    );
-  }, [searchQuery, selectedCuisineId, selectedDifficultyId, selectedDietId, recipes]);
+    if (searchQuery || selectedCuisineId || selectedDifficultyId || selectedDietId) {
+      fetchFilteredRecipes(true);
+    } else {
+      dispatch(fetchRecipes({ page: 1, limit: PAGELIMIT }));
+      setPage(1);
+    }
+  }, [searchQuery, selectedCuisineId, selectedDifficultyId, selectedDietId]);
+
+  const fetchFilteredRecipes = (resetPage: boolean = false) => {
+    const newPage = resetPage ? 1 : page + 1;
+    dispatch(fetchRecipes({
+      page: newPage,
+      limit: PAGELIMIT,
+      query: searchQuery,
+      cuisineId: selectedCuisineId,
+      difficultyId: selectedDifficultyId,
+      dietId: selectedDietId,
+    }));
+    if (resetPage) {
+      setPage(1);
+    } else {
+      setPage(newPage);
+    }
+  };
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    filterRecipes(
-      query,
-      selectedCuisineId,
-      selectedDifficultyId,
-      selectedDietId
-    );
   };
 
   const handleCuisineChange = (cuisineId: Cuisine["id"]) => {
     setSelectedCuisineId(cuisineId);
-    filterRecipes(searchQuery, cuisineId, selectedDifficultyId, selectedDietId);
   };
 
   const handleDifficultyChange = (difficultyId: Difficulty["id"]) => {
     setSelectedDifficultyId(difficultyId);
-    filterRecipes(searchQuery, selectedCuisineId, difficultyId, selectedDietId);
   };
 
   const handleDietChange = (dietId: Diet["id"]) => {
     setSelectedDietId(dietId);
-    filterRecipes(searchQuery, selectedCuisineId, selectedDifficultyId, dietId);
-  };
-
-  const filterRecipes = (
-    query: string,
-    cuisineId: Cuisine["id"],
-    difficultyId: Difficulty["id"],
-    dietId: Diet["id"]
-  ) => {
-    if (!recipes) return;
-
-    const filtered = recipes.filter((recipe) => {
-      const matchesQuery =
-        recipe.name.toLowerCase().includes(query.toLowerCase()) ||
-        recipe.ingredients.some((ingredient) =>
-          ingredient.toLowerCase().includes(query.toLowerCase())
-        ) ||
-        recipe.instructions.toLowerCase().includes(query.toLowerCase());
-      const matchesCuisine = cuisineId === "" || recipe.cuisineId === cuisineId;
-      const matchesDifficulty =
-        difficultyId === "" || recipe.difficultyId === difficultyId;
-      const matchesDiet = dietId === "" || recipe.dietId === dietId;
-
-      return matchesQuery && matchesCuisine && matchesDifficulty && matchesDiet;
-    });
-
-    setFilteredRecipes(filtered);
   };
 
   const handleRecipeClick = (recipe: Recipe) => {
@@ -122,30 +99,24 @@ const Home = () => {
   const closeAddRecipeModal = () => {
     setToggleAddRecipeModal(false);
     if (hasMore) {
-      dispatch(fetchRecipes({ page: page + 1, limit: PAGELIMIT }));
-      setPage(page + 1);
+      fetchFilteredRecipes();
     }
   };
 
   const handleScroll = () => {
     if (
-      window.innerHeight + window.scrollY >= (document.body.offsetHeight - 500) &&
-      !loading &&
-      !error &&
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
+      status !== 'loading' &&
       hasMore
     ) {
-      setLoading(true);
-      dispatch(fetchRecipes({ page: page + 1, limit: PAGELIMIT })).then(() => {
-        setLoading(false);
-        setPage(page + 1);
-      });
+      fetchFilteredRecipes();
     }
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [loading, error, hasMore]);
+  }, [status, hasMore]);
 
   return (
     <div className="m-auto p-8 max-w-7xl">
@@ -161,14 +132,16 @@ const Home = () => {
         />
         <Button onClick={handleAddRecipe}>Add Recipe</Button>
       </div>
-      <RecipeList recipes={filteredRecipes} onRecipeClick={handleRecipeClick} />
+      <RecipeList recipes={recipes} onRecipeClick={handleRecipeClick} />
       {selectedRecipe && (
-        <RecipeModal recipe={selectedRecipe} comments={comments} onClose={closeRecipeModal} />
+        <RecipeModal
+          recipe={selectedRecipe}
+          comments={comments}
+          onClose={closeRecipeModal}
+        />
       )}
-      {toggleAddRecipeModal && (
-        <AddRecipeModal onClose={closeAddRecipeModal} />
-      )}
-      {loading && <p>Loading...</p>}
+      {toggleAddRecipeModal && <AddRecipeModal onClose={closeAddRecipeModal} />}
+      {status === 'loading' && <p className="w-full flex justify-center align-middle">Loading...</p>}
     </div>
   );
 };

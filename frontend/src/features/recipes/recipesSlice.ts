@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { Recipe } from '../../utils/types';
-import { recipesAPI } from './recipesAPI';
+import fetchRecipesFromAPI from './fetchRecipesFromAPI';
 
 interface RecipesState {
   data: Recipe[];
@@ -20,13 +20,16 @@ const initialState: RecipesState = {
 
 export const fetchRecipes = createAsyncThunk(
   'recipes/fetchRecipes',
-  async ({ page, limit }: { page: number; limit: number }, { getState }) => {
+  async (
+    { page, limit, query, cuisineId, difficultyId, dietId }:
+    { page: number; limit: number; query?: string; cuisineId?: string; difficultyId?: string; dietId?: string },
+    { getState }
+  ) => {
     const currentState = getState() as { recipes: RecipesState };
     const { data } = currentState.recipes;
-    const response = await recipesAPI(page, limit);
-    console.log("recipes fetched:", response)
+    const response = await fetchRecipesFromAPI(page, limit, query, cuisineId, difficultyId, dietId);
     return {
-      recipes: [...data, ...response],
+      recipes: page === 1 ? response : [...data, ...response],
       hasMore: response.length === limit,
     };
   }
@@ -35,7 +38,15 @@ export const fetchRecipes = createAsyncThunk(
 const recipesSlice = createSlice({
   name: 'recipes',
   initialState,
-  reducers: {},
+  reducers: {
+    resetRecipes: (state) => {
+      state.data = [];
+      state.page = 1;
+      state.hasMore = true;
+      state.status = 'idle';
+      state.error = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchRecipes.pending, (state) => {
@@ -53,5 +64,7 @@ const recipesSlice = createSlice({
       });
   },
 });
+
+export const { resetRecipes } = recipesSlice.actions;
 
 export default recipesSlice.reducer;

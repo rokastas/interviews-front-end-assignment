@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { Cuisine } from '../../utils/types';
-import { cuisinesAPI } from './cuisinesAPI';
+import fetchCuisinesFromAPI from './fetchCuisinesFromAPI';
 
 interface CuisinesState {
   data: Cuisine[];
@@ -15,7 +15,7 @@ const initialState: CuisinesState = {
 };
 
 export const fetchCuisines = createAsyncThunk('cuisines/fetchCuisines', async () => {
-  const response = await cuisinesAPI();
+  const response = await fetchCuisinesFromAPI();
   return response;
 });
 

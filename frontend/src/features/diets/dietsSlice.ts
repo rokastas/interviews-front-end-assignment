@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { Diet } from '../../utils/types';
-import { dietsAPI } from './dietsAPI';
+import fetchDietsFromAPI from './fetchDietsFromAPI';
 
 interface DietsState {
   data: Diet[];
@@ -15,7 +15,7 @@ const initialState: DietsState = {
 };
 
 export const fetchDiets = createAsyncThunk('diets/fetchDiets', async () => {
-  const response = await dietsAPI();
+  const response = await fetchDietsFromAPI();
   return response;
 });
 

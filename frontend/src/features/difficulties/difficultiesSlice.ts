@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { Difficulty } from '../../utils/types';
-import { difficultiesAPI } from './difficultiesAPI';
+import fetchDifficultiesFromAPI from './fetchDifficultiesFromAPI';
 
 interface DifficultiesState {
   data: Difficulty[];
@@ -15,7 +15,7 @@ const initialState: DifficultiesState = {
 };
 
 export const fetchDifficulties = createAsyncThunk('difficulties/fetchDifficulties', async () => {
-  const response = await difficultiesAPI();
+  const response = await fetchDifficultiesFromAPI();
   return response;
 });
 
