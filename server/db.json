@@ -351,6 +351,294 @@
       "dietId": "3",
       "difficultyId": "1",
       "image": "/uploads/Pasta-Primavera-f.jpg"
+    },
+    {
+      "id": "23",
+      "name": "Pierogi",
+      "ingredients": [
+        "Potatoes",
+        "Onion",
+        "Bacon",
+        "Sour Cream",
+        "Flour"
+      ],
+      "instructions": "Prepare filling. Make dough, fill with mixture, and boil. Serve with sour cream and bacon.",
+      "cuisineId": "16",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Pierogi.webp"
+    },
+    {
+      "id": "24",
+      "name": "Shawarma",
+      "ingredients": [
+        "Chicken",
+        "Pita Bread",
+        "Yogurt Sauce",
+        "Pickles",
+        "Tomato"
+      ],
+      "instructions": "Marinate chicken. Grill and slice. Serve in pita with yogurt sauce, pickles, and tomato.",
+      "cuisineId": "12",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Chicken-Shawarma.webp"
+    },
+    {
+      "id": "25",
+      "name": "Chimichurri Steak",
+      "ingredients": [
+        "Steak",
+        "Chimichurri Sauce",
+        "Potatoes",
+        "Green Beans",
+        "Garlic"
+      ],
+      "instructions": "Grill steak with chimichurri sauce. Serve with roasted potatoes, green beans, and garlic.",
+      "cuisineId": "3",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Chimichurri-Steak.webp"
+    },
+    {
+      "id": "26",
+      "name": "Miso Soup",
+      "ingredients": [
+        "Miso Paste",
+        "Tofu",
+        "Seaweed",
+        "Green Onions",
+        "Dashi Broth"
+      ],
+      "instructions": "Dissolve miso paste in dashi broth. Add tofu, seaweed, and green onions. Simmer lightly.",
+      "cuisineId": "5",
+      "dietId": "1",
+      "difficultyId": "1",
+      "image": "/uploads/Miso-Soup.webp"
+    },
+    {
+      "id": "27",
+      "name": "Borscht",
+      "ingredients": [
+        "Beets",
+        "Cabbage",
+        "Potatoes",
+        "Beef Broth",
+        "Sour Cream"
+      ],
+      "instructions": "Boil beets, cabbage, and potatoes in beef broth. Serve hot with a dollop of sour cream.",
+      "cuisineId": "11",
+      "dietId": "3",
+      "difficultyId": "2",
+      "image": "/uploads/Borscht.webp"
+    },
+    {
+      "id": "28",
+      "name": "Ratatouille",
+      "ingredients": [
+        "Eggplant",
+        "Zucchini",
+        "Tomatoes",
+        "Bell Peppers",
+        "Garlic"
+      ],
+      "instructions": "Sauté vegetables with garlic. Simmer until tender. Serve warm.",
+      "cuisineId": "7",
+      "dietId": "1",
+      "difficultyId": "2",
+      "image": "/uploads/Ratatouille.webp"
+    },
+    {
+      "id": "29",
+      "name": "Goulash",
+      "ingredients": [
+        "Beef",
+        "Potatoes",
+        "Onion",
+        "Paprika",
+        "Tomato Paste"
+      ],
+      "instructions": "Brown beef with onions. Add potatoes, paprika, and tomato paste. Simmer until beef is tender.",
+      "cuisineId": "19",
+      "dietId": "3",
+      "difficultyId": "2",
+      "image": "/uploads/Goulash.webp"
+    },
+    {
+      "id": "30",
+      "name": "Poutine",
+      "ingredients": [
+        "French Fries",
+        "Cheese Curds",
+        "Gravy",
+        "Green Onions",
+        "Bacon Bits"
+      ],
+      "instructions": "Prepare French fries. Top with cheese curds, gravy, green onions, and bacon bits. Serve hot.",
+      "cuisineId": "10",
+      "dietId": "3",
+      "difficultyId": "1",
+      "image": "/uploads/Poutine.webp"
+    },
+    {
+      "id": "31",
+      "name": "Empanadas",
+      "ingredients": [
+        "Ground Beef",
+        "Onion",
+        "Bell Peppers",
+        "Olives",
+        "Pastry Dough"
+      ],
+      "instructions": "Sauté ground beef with onions, bell peppers, and olives. Fill pastry dough, seal, and bake until golden.",
+      "cuisineId": "16",
+      "dietId": "3",
+      "difficultyId": "2",
+      "image": "/uploads/Empanadas.webp"
+    },
+    {
+      "id": "32",
+      "name": "Samosa",
+      "ingredients": [
+        "Potatoes",
+        "Peas",
+        "Indian Spices",
+        "Pastry Dough",
+        "Oil"
+      ],
+      "instructions": "Boil potatoes and peas. Mash with Indian spices. Fill pastry dough, seal, and deep fry until golden.",
+      "cuisineId": "19",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Samosa.webp"
+    },
+    {
+      "id": "33",
+      "name": "Falafel Wrap",
+      "ingredients": [
+        "Chickpeas",
+        "Tahini Sauce",
+        "Lettuce",
+        "Tomato",
+        "Flatbread"
+      ],
+      "instructions": "Blend chickpeas with spices. Form into balls and fry until crispy. Serve in flatbread with tahini sauce, lettuce, and tomato.",
+      "cuisineId": "12",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Falafel-Wrap.webp"
+    },
+    {
+      "id": "34",
+      "name": "Kung Pao Chicken",
+      "ingredients": [
+        "Chicken",
+        "Peppers",
+        "Peanuts",
+        "Soy Sauce",
+        "Chili Paste"
+      ],
+      "instructions": "Stir-fry chicken with peppers, peanuts, soy sauce, and chili paste. Serve hot.",
+      "cuisineId": "14",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Kung-Pao-Chicken.webp"
+    },
+    {
+      "id": "35",
+      "name": "Chicken Adobo",
+      "ingredients": [
+        "Chicken Thighs",
+        "Soy Sauce",
+        "Vinegar",
+        "Garlic",
+        "Bay Leaves"
+      ],
+      "instructions": "Simmer chicken thighs in soy sauce, vinegar, garlic, and bay leaves until tender. Serve with rice.",
+      "cuisineId": "15",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Chicken-Adobo.webp"
+    },
+    {
+      "id": "36",
+      "name": "Pho",
+      "ingredients": [
+        "Beef Broth",
+        "Rice Noodles",
+        "Beef Slices",
+        "Bean Sprouts",
+        "Herbs"
+      ],
+      "instructions": "Boil beef broth. Add rice noodles and beef slices. Serve with bean sprouts and herbs.",
+      "cuisineId": "15",
+      "dietId": "4",
+      "difficultyId": "2",
+      "image": "/uploads/Pho.webp"
+    },
+    {
+      "id": "37",
+      "name": "Coq au Vin",
+      "ingredients": [
+        "Chicken",
+        "Red Wine",
+        "Mushrooms",
+        "Onion",
+        "Bacon"
+      ],
+      "instructions": "Marinate chicken in red wine. Sauté with mushrooms, onions, and bacon. Simmer until chicken is cooked through.",
+      "cuisineId": "7",
+      "dietId": "3",
+      "difficultyId": "3",
+      "image": "/uploads/Coq-au-Vin.webp"
+    },
+    {
+      "id": "38",
+      "name": "Moussaka",
+      "ingredients": [
+        "Eggplant",
+        "Ground Beef",
+        "Potatoes",
+        "Tomato Sauce",
+        "Béchamel Sauce"
+      ],
+      "instructions": "Layer eggplant, ground beef, potatoes, tomato sauce, and béchamel sauce. Bake until golden and bubbly.",
+      "cuisineId": "8",
+      "dietId": "3",
+      "difficultyId": "3",
+      "image": "/uploads/Moussaka.webp"
+    },
+    {
+      "id": "39",
+      "name": "Ceviche",
+      "ingredients": [
+        "White Fish",
+        "Lime Juice",
+        "Onion",
+        "Cilantro",
+        "Chili Peppers"
+      ],
+      "instructions": "Marinate diced fish in lime juice. Mix with onions, cilantro, and chili peppers. Serve cold.",
+      "cuisineId": "6",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Ceviche.webp"
+    },
+    {
+      "id": "40",
+      "name": "Pavlova",
+      "ingredients": [
+        "Egg Whites",
+        "Sugar",
+        "Whipped Cream",
+        "Berries",
+        "Passion Fruit"
+      ],
+      "instructions": "Beat egg whites and sugar until stiff. Bake until crisp. Serve topped with whipped cream, berries, and passion fruit.",
+      "cuisineId": "8",
+      "dietId": "5",
+      "difficultyId": "2",
+      "image": "/uploads/Pavlova.webp"
     }
   ],
   "comments": [
@@ -535,6 +823,279 @@
       "comment": "Fresh and vibrant.",
       "rating": 4,
       "date": "2024-07-02T14:20:00.000Z"
+    },
+    {
+      "id": "27",
+      "recipeId": "3",
+      "comment": "So good, so sweet!",
+      "rating": 4,
+      "date": "2024-06-27T14:58:50.994Z"
+    },
+    {
+      "id": "28",
+      "recipeId": "1",
+      "comment": "Nice, but I got fat",
+      "rating": 3,
+      "date": "2024-06-27T15:20:43.463Z"
+    },
+    {
+      "id": "29",
+      "recipeId": "19",
+      "comment": "Delicious and refreshing!",
+      "rating": 5,
+      "date": "2024-06-27T15:20:43.463Z"
+    },
+    {
+      "id": "30",
+      "recipeId": "19",
+      "comment": "A perfect summer treat.",
+      "rating": 4,
+      "date": "2024-06-26T10:15:32.123Z"
+    },
+    {
+      "id": "31",
+      "recipeId": "20",
+      "comment": "Savory and filling, great for dinner.",
+      "rating": 4,
+      "date": "2024-06-25T14:30:15.892Z"
+    },
+    {
+      "id": "32",
+      "recipeId": "20",
+      "comment": "Reminds me of home. Love it!",
+      "rating": 5,
+      "date": "2024-06-24T08:45:59.721Z"
+    },
+    {
+      "id": "33",
+      "recipeId": "21",
+      "comment": "Spicy and satisfying.",
+      "rating": 4,
+      "date": "2024-06-23T19:55:12.336Z"
+    },
+    {
+      "id": "34",
+      "recipeId": "21",
+      "comment": "Could use a bit more seasoning, but still good.",
+      "rating": 3,
+      "date": "2024-06-23T12:10:05.504Z"
+    },
+    {
+      "id": "35",
+      "recipeId": "22",
+      "comment": "Comfort food at its best.",
+      "rating": 5,
+      "date": "2024-06-22T09:20:18.782Z"
+    },
+    {
+      "id": "36",
+      "recipeId": "22",
+      "comment": "Simple yet delicious.",
+      "rating": 4,
+      "date": "2024-06-21T17:30:29.987Z"
+    },
+    {
+      "id": "37",
+      "recipeId": "23",
+      "comment": "Absolutely divine!",
+      "rating": 5,
+      "date": "2024-06-20T14:40:47.623Z"
+    },
+    {
+      "id": "38",
+      "recipeId": "23",
+      "comment": "Not what I expected, but pleasantly surprised.",
+      "rating": 4,
+      "date": "2024-06-19T11:55:34.815Z"
+    },
+    {
+      "id": "39",
+      "recipeId": "24",
+      "comment": "Unique flavors, loved it!",
+      "rating": 5,
+      "date": "2024-06-18T08:25:59.932Z"
+    },
+    {
+      "id": "40",
+      "recipeId": "24",
+      "comment": "Interesting combination, worth trying.",
+      "rating": 4,
+      "date": "2024-06-17T16:40:10.204Z"
+    },
+    {
+      "id": "41",
+      "recipeId": "25",
+      "comment": "Refreshing and light, perfect for a hot day.",
+      "rating": 5,
+      "date": "2024-06-16T13:15:22.331Z"
+    },
+    {
+      "id": "42",
+      "recipeId": "25",
+      "comment": "Could use more sweetness, but still enjoyable.",
+      "rating": 3,
+      "date": "2024-06-15T09:30:45.409Z"
+    },
+    {
+      "id": "43",
+      "recipeId": "26",
+      "comment": "Rich and decadent, loved every bite.",
+      "rating": 5,
+      "date": "2024-06-14T17:55:56.512Z"
+    },
+    {
+      "id": "44",
+      "recipeId": "26",
+      "comment": "A bit too heavy for my taste, but delicious.",
+      "rating": 4,
+      "date": "2024-06-13T12:20:03.621Z"
+    },
+    {
+      "id": "45",
+      "recipeId": "27",
+      "comment": "Perfectly spiced, great with rice.",
+      "rating": 4,
+      "date": "2024-06-12T08:45:19.782Z"
+    },
+    {
+      "id": "46",
+      "recipeId": "27",
+      "comment": "Too spicy for me, but my partner loved it.",
+      "rating": 3,
+      "date": "2024-06-11T14:30:25.924Z"
+    },
+    {
+      "id": "47",
+      "recipeId": "28",
+      "comment": "Classic and comforting, just like mom used to make.",
+      "rating": 5,
+      "date": "2024-06-10T11:20:37.033Z"
+    },
+    {
+      "id": "48",
+      "recipeId": "28",
+      "comment": "Simple and delicious, a family favorite now.",
+      "rating": 4,
+      "date": "2024-06-09T09:15:50.208Z"
+    },
+    {
+      "id": "49",
+      "recipeId": "29",
+      "comment": "Refreshing and light, perfect for a hot day.",
+      "rating": 5,
+      "date": "2024-06-08T17:55:59.312Z"
+    },
+    {
+      "id": "50",
+      "recipeId": "29",
+      "comment": "Could use more sweetness, but still enjoyable.",
+      "rating": 3,
+      "date": "2024-06-07T12:30:10.409Z"
+    },
+    {
+      "id": "51",
+      "recipeId": "30",
+      "comment": "Rich and decadent, loved every bite.",
+      "rating": 5,
+      "date": "2024-06-06T08:45:22.512Z"
+    },
+    {
+      "id": "52",
+      "recipeId": "30",
+      "comment": "A bit too heavy for my taste, but delicious.",
+      "rating": 4,
+      "date": "2024-06-05T14:30:25.621Z"
+    },
+    {
+      "id": "53",
+      "recipeId": "31",
+      "comment": "Perfectly spiced, great with rice.",
+      "rating": 4,
+      "date": "2024-06-04T11:20:37.782Z"
+    },
+    {
+      "id": "54",
+      "recipeId": "31",
+      "comment": "Too spicy for me, but my partner loved it.",
+      "rating": 3,
+      "date": "2024-06-03T09:15:50.924Z"
+    },
+    {
+      "id": "55",
+      "recipeId": "32",
+      "comment": "Classic and comforting, just like mom used to make.",
+      "rating": 5,
+      "date": "2024-06-02T17:55:59.208Z"
+    },
+    {
+      "id": "56",
+      "recipeId": "32",
+      "comment": "Simple and delicious, a family favorite now.",
+      "rating": 4,
+      "date": "2024-06-01T12:30:10.312Z"
+    },
+    {
+      "id": "57",
+      "recipeId": "33",
+      "comment": "Refreshing and light, perfect for a hot day.",
+      "rating": 5,
+      "date": "2024-05-31T08:45:22.409Z"
+    },
+    {
+      "id": "58",
+      "recipeId": "33",
+      "comment": "Could use more sweetness, but still enjoyable.",
+      "rating": 3,
+      "date": "2024-05-30T14:30:25.512Z"
+    },
+    {
+      "id": "59",
+      "recipeId": "34",
+      "comment": "Rich and decadent, loved every bite.",
+      "rating": 5,
+      "date": "2024-05-29T11:20:37.621Z"
+    },
+    {
+      "id": "60",
+      "recipeId": "34",
+      "comment": "A bit too heavy for my taste, but delicious.",
+      "rating": 4,
+      "date": "2024-05-28T09:15:50.782Z"
+    },
+    {
+      "id": "61",
+      "recipeId": "35",
+      "comment": "Perfectly spiced, great with rice.",
+      "rating": 4,
+      "date": "2024-05-27T17:55:59.924Z"
+    },
+    {
+      "id": "62",
+      "recipeId": "35",
+      "comment": "Too spicy for me, but my partner loved it.",
+      "rating": 3,
+      "date": "2024-05-26T12:30:10.009Z"
+    },
+    {
+      "id": "63",
+      "recipeId": "36",
+      "comment": "Classic and comforting, just like mom used to make.",
+      "rating": 5,
+      "date": "2024-05-25T08:45:22.312Z"
+    },
+    {
+      "id": "64",
+      "recipeId": "36",
+      "comment": "Simple and delicious, a family favorite now.",
+      "rating": 4,
+      "date": "2024-05-24T14:30:25.409Z"
+    },
+    {
+      "id": "65",
+      "recipeId": "37",
+      "comment": "Refreshing and light, perfect for a hot day.",
+      "rating": 5,
+      "date": "2024-05-23T11:20:37.512Z"
     }
   ],
   "cuisines": [
@@ -593,6 +1154,30 @@
     {
       "id": "14",
       "name": "Korean"
+    },
+    {
+      "id": "15",
+      "name": "Vietnamese"
+    },
+    {
+      "id": "16",
+      "name": "Eastern European"
+    },
+    {
+      "id": "17",
+      "name": "Mediterranean"
+    },
+    {
+      "id": "18",
+      "name": "Caribbean"
+    },
+    {
+      "id": "19",
+      "name": "South Asian"
+    },
+    {
+      "id": "20",
+      "name": "Latin American"
     }
   ],
   "difficulties": [
