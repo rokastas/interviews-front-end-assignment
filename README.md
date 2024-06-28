@@ -6,7 +6,7 @@ This project is a Next.js React application written in TypeScript. It is designe
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
 
-Node.js: You have installed Node.js version 14 or above.
+Node.js: You have installed Node.js version 14 or above. <br>
 npm: You have installed npm (Node Package Manager).
 
 ## Getting Started
@@ -37,24 +37,24 @@ npm run dev
 Open http://localhost:3000 with your browser to see the result.
 
 ## Project Structure Details
-.next/:         Contains the built application.
-node_modules/:  Contains all the npm dependencies.
-public/:        Stores static files such as images.
-src/:           Contains the source code for the application.
-app/:           Main application files including layout and global styles.
-components/:    Reusable components used throughout the application.
-modals/:        Components for modal dialogs.
-rating/:        Components related to recipe ratings.
-recipes/:       Components related to recipe management.
-features/:      Features and modules related to specific functionalities.
-comments/:      Components and logic for managing comments.
-cuisines/:      Components and logic for managing cuisines.
-diets/:         Components and logic for managing diets.
-difficulties/:  Components and logic for managing difficulty levels.
-recipes/:       Components and logic for managing recipes.
-hooks/:         Custom React hooks.
-store/:         State management files.
-utils/:         Utility functions and types.
+.next/:         Contains the built application.<br>
+node_modules/:  Contains all the npm dependencies.<br>
+public/:        Stores static files such as images.<br>
+src/:           Contains the source code for the application.<br>
+app/:           Main application files including layout and global styles.<br>
+components/:    Reusable components used throughout the application.<br>
+modals/:        Components for modal dialogs.<br>
+rating/:        Components related to recipe ratings.<br>
+recipes/:       Components related to recipe management.<br>
+features/:      Features and modules related to specific functionalities.<br>
+comments/:      Components and logic for managing comments.<br>
+cuisines/:      Components and logic for managing cuisines.<br>
+diets/:         Components and logic for managing diets.<br>
+difficulties/:  Components and logic for managing difficulty levels.<br>
+recipes/:       Components and logic for managing recipes.<br>
+hooks/:         Custom React hooks.<br>
+store/:         State management files.<br>
+utils/:         Utility functions and types.<br>
 
 ## Author
 Made with ❤️, 🍵 and 🥵 by [Rokas Stasiulis](https://github.com/rokastas)
