@@ -38,24 +38,30 @@ npm run dev
 Open http://localhost:3000 with your browser to see the result.
 
 ## Project Structure Details
-.next/:         Contains the built application.<br>
-node_modules/:  Contains all the npm dependencies.<br>
-public/:        Stores static files such as images.<br>
-src/:           Contains the source code for the application.<br>
-app/:           Main application files including layout and global styles.<br>
-components/:    Reusable components used throughout the application.<br>
-modals/:        Components for modal dialogs.<br>
-rating/:        Components related to recipe ratings.<br>
-recipes/:       Components related to recipe management.<br>
-features/:      Features and modules related to specific functionalities.<br>
-comments/:      Components and logic for managing comments.<br>
-cuisines/:      Components and logic for managing cuisines.<br>
-diets/:         Components and logic for managing diets.<br>
-difficulties/:  Components and logic for managing difficulty levels.<br>
-recipes/:       Components and logic for managing recipes.<br>
-hooks/:         Custom React hooks.<br>
-store/:         State management files.<br>
-utils/:         Utility functions and types.<br>
+```
+frontend/
+  ├── .next/                          # Contains the built application
+  ├── node_modules/                   # Contains all the npm dependencies
+  ├── public/                         # Stores static files such as images
+  ├── src/                            # Contains the source code for the application
+  │   ├── app/                        # Main application files including layout and global styles
+  │   ├── components/                 # Reusable components used throughout the application
+  │   │   ├── modals/                 # Components for modal dialogs
+  │   │   ├── rating/                 # Components related to recipe ratings
+  │   │   └── ...                     # Other component directories as needed
+  │   ├── features/                   # Features and modules related to specific functionalities
+  │   │   ├── comments/               # Components and logic for managing comments
+  │   │   ├── cuisines/               # Components and logic for managing cuisines
+  │   │   ├── diets/                  # Components and logic for managing diets
+  │   │   ├── difficulties/           # Components and logic for managing difficulty levels
+  │   │   └── recipes/                # Components and logic for managing recipes
+  │   ├── hooks/                      # Custom React hooks
+  │   ├── store/                      # State management files
+  │   └── utils/                      # Utility functions and types
+  ├── package.json                    # Project dependencies and scripts
+  ├── README.md                       # Project documentation
+  └── ...
+```
 
 ## Author
 Made with ❤️, 🍵 and 🥵 by [Rokas Stasiulis](https://github.com/rokastas)
