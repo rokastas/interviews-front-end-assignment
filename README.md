@@ -63,9 +63,6 @@ frontend/
   └── ...
 ```
 
-## Author
-Made with ❤️, 🍵 and 🥵 by [Rokas Stasiulis](https://github.com/rokastas)
-
 <br><br>
 
 <!---
@@ -171,3 +168,6 @@ comments.
 ## How to run
 ![capybara](https://media.istockphoto.com/id/1490766749/vector/vector-cute-capybara-isolated-on-white-background-vector-graphics.jpg?s=612x612&w=0&k=20&c=E8lNFT0TQFTNKTVzwoMj0VbVfodcG6ema2iMQeISCvM=)
 ...
+
+## Author
+Made with ❤️, 🍵 and 🥵 by [Rokas Stasiulis](https://github.com/rokastas)
