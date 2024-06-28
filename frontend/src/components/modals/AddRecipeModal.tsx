@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/hooks";
-import { Cuisine, Difficulty, Diet } from "../../utils/types";
 
 interface RecipeModalProps {
   onClose: () => void;
