@@ -10,8 +10,8 @@ Node.js: You have installed Node.js version 14 or above. <br>
 npm: You have installed npm (Node Package Manager).
 
 ## Getting Started
-To start the local server, you can find the instructions on how to run it at 'server/README'
-Then follow these simple steps to start the frontend application.<br>
+To start the local server, you can find the instructions on how to run it at 'server/README'.<br>
+Then follow these simple steps to start the frontend application.
 
 ## Installation
 Clone the repo
