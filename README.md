@@ -11,7 +11,7 @@ npm: You have installed npm (Node Package Manager).
 
 ## Getting Started
 To start the local server, you can find the instructions on how to run it at 'server/README'.<br>
-Then follow these simple steps to start the frontend application.
+Once done, proceed with the following steps to initiate the client-side application.
 
 ## Installation
 Clone the repo
