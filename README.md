@@ -1,7 +1,7 @@
-# Project Documentation for Next.js React TypeScript Application
+# RecipeBook
 
 ## Project Overview
-This project is a Next.js React application written in TypeScript. It is designed to manage recipes with functionalities including adding comments, rating recipes, and categorizing recipes based on difficulty, cuisine, and diet type.
+This project is a Next.js React application written in TypeScript. It is designed to display and manage recipes with functionalities including adding comments, rating recipes, and filtering recipes based on difficulty, cuisine, and diet type.
 
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
@@ -15,7 +15,7 @@ To get a local copy up and running follow these simple steps.
 ## Installation
 Clone the repo
 ```
-git clone https://github.com/your_username/your_repo_name.git
+git clone https://github.com/rokastas/interviews-front-end-assignment.git
 ```
 
 Navigate to the project directory
@@ -58,6 +58,7 @@ utils/:         Utility functions and types.
 
 ## Author
 Made with ❤️, 🍵 and 🥵 by [Rokas Stasiulis](https://github.com/rokastas)
+
 
 
 <!---
