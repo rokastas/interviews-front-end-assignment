@@ -1,3 +1,65 @@
+# Project Documentation for Next.js React TypeScript Application
+
+## Project Overview
+This project is a Next.js React application written in TypeScript. It is designed to manage recipes with functionalities including adding comments, rating recipes, and categorizing recipes based on difficulty, cuisine, and diet type.
+
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
+
+Node.js: You have installed Node.js version 14 or above.
+npm: You have installed npm (Node Package Manager).
+
+## Getting Started
+To get a local copy up and running follow these simple steps.
+
+## Installation
+Clone the repo
+```
+git clone https://github.com/your_username/your_repo_name.git
+```
+
+Navigate to the project directory
+```
+cd frontend
+```
+
+Install NPM packages
+```
+npm install
+```
+
+## Running the Project
+Start the development server
+```
+npm run dev
+```
+
+Open http://localhost:3000 with your browser to see the result.
+
+## Project Structure Details
+.next/:         Contains the built application.
+node_modules/:  Contains all the npm dependencies.
+public/:        Stores static files such as images.
+src/:           Contains the source code for the application.
+app/:           Main application files including layout and global styles.
+components/:    Reusable components used throughout the application.
+modals/:        Components for modal dialogs.
+rating/:        Components related to recipe ratings.
+recipes/:       Components related to recipe management.
+features/:      Features and modules related to specific functionalities.
+comments/:      Components and logic for managing comments.
+cuisines/:      Components and logic for managing cuisines.
+diets/:         Components and logic for managing diets.
+difficulties/:  Components and logic for managing difficulty levels.
+recipes/:       Components and logic for managing recipes.
+hooks/:         Custom React hooks.
+store/:         State management files.
+utils/:         Utility functions and types.
+
+## Author
+Made with ❤️, 🍵 and 🥵 by [Rokas Stasiulis](https://github.com/rokastas)
+
+
 <!---
 Hi! We're happy you opened this file, not everyone does!
 To let us know you did, paste a capybara picture
