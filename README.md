@@ -1,7 +1,7 @@
 # RecipeBook
 
 ## Project Overview
-This project is a Next.js React application written in TypeScript. It is designed to display and manage recipes with functionalities including adding comments, rating recipes, and filtering recipes based on difficulty, cuisine, and diet type.
+This project is a Next.js React application written in TypeScript. It is designed to display and manage recipes with functionalities including adding recipes, comments, rating recipes, and filtering recipes based on difficulty, cuisine, and diet type.
 
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
