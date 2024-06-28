@@ -50,7 +50,7 @@ const AddNewComment: React.FC<AddCommentFieldProps> = ({ recipe, onAddComment })
       </label>
       <textarea
         id="comment"
-        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        className="resize-none mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         value={comment}
         onChange={(e) => setComment(e.target.value)}
         rows={4}

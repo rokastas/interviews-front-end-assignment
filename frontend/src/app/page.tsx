@@ -37,19 +37,22 @@ const Home = () => {
   } = useRecipeData(searchQuery, selectedCuisineId, selectedDifficultyId, selectedDietId);
 
   return (
-    <div className="m-auto p-8 max-w-7xl">
-      <div className="flex flex-row mb-4">
-        <SearchBar
-          onSearch={handleSearch}
-          onCuisineChange={handleCuisineChange}
-          onDifficultyChange={handleDifficultyChange}
-          onDietChange={handleDietChange}
-          cuisines={cuisines}
-          difficulties={difficulties}
-          diets={diets}
-        />
-        <Button onClick={handleAddRecipe}>Add Recipe</Button>
-      </div>
+    <div className="m-auto p-4 md:p-8 lg:p-8 overflow-x-hidden lg:max-w-7xl">
+      <div className="flex flex-col md:flex-row gap-2 mb-4">
+  <SearchBar
+    onSearch={handleSearch}
+    onCuisineChange={handleCuisineChange}
+    onDifficultyChange={handleDifficultyChange}
+    onDietChange={handleDietChange}
+    cuisines={cuisines}
+    difficulties={difficulties}
+    diets={diets}
+  />
+  <div className="flex justify-end md:justify-start">
+    <Button onClick={handleAddRecipe}>Add Recipe</Button>
+  </div>
+</div>
+
       <RecipeList recipes={recipes} onRecipeClick={handleRecipeClick} />
       {selectedRecipe && (
         <RecipeModal

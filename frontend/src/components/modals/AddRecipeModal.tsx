@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/hooks";
+import { Cuisine, Difficulty, Diet } from "../../utils/types";
 
 interface RecipeModalProps {
   onClose: () => void;
@@ -91,12 +92,13 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-40 py-20">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div
         id="recipe-modal-content"
-        className="flex bg-white min-w-full max-w-3xl rounded-lg overflow-hidden"
+        className="bg-white mx-4 my-8 p-6 md:p-10 max-h-full overflow-y-auto"
+        style={{ maxWidth: "calc(100vw - 32px)", maxHeight: "calc(100vh - 32px)" }}
       >
-        <form className="w-full p-8" onSubmit={handleSubmit}>
+        <form className="w-full" onSubmit={handleSubmit}>
           <h2 className="text-2xl font-bold mb-4">Add New Recipe</h2>
           <div className="mb-4">
             <label
@@ -123,7 +125,7 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
             </label>
             <textarea
               id="ingredients"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="resize-none mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
               rows={4}
@@ -139,7 +141,7 @@ const AddRecipeModal: React.FC<RecipeModalProps> = ({ onClose }) => {
             </label>
             <textarea
               id="instructions"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="resize-none mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
               rows={6}
